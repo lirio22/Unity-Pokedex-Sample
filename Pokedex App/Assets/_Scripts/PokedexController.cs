@@ -37,7 +37,7 @@ public class PokedexController : MonoBehaviour
         GetPokemon();
     }
 
-    public void GetPokemon()
+    private void GetPokemon()
     {
         if (canGetNext)
         {
@@ -62,8 +62,16 @@ public class PokedexController : MonoBehaviour
 
     public void SearchPokemon()
     {
-        entryIndex = idSearch.text;
-        GetPokemon();
+        if (idSearch.text != "" && idSearch.text != "0")
+        {
+            entryIndex = idSearch.text;
+            idSearch.text = "";
+            GetPokemon();
+        }
+        else
+        {
+            idSearch.text = "";
+        }
     }
 
     private IEnumerator WaitResponse()
